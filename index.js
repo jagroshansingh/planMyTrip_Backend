@@ -3,17 +3,11 @@ require('dotenv').config()
 const {connection}=require('./db')
 const { tripModel } = require('./Models/TripModel')
 const {TripRouter}=require('./Router/TripRouter')
+const cors=require('cors')
 const app=express()
 app.use(express.json())
+app.use(cors())
 
-// app.post('/',async(req,res)=>{
-//     try {
-//         await tripModel.insertMany(req.body)
-//         res.send('checking...')
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
 app.use('/',TripRouter)
 
 app.listen(process.env.PORT,async()=>{

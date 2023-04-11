@@ -11,4 +11,13 @@ TripRouter.post("/insert",async(req,res)=>{
     }
 })
 
+TripRouter.get("/retrieve",async(req,res)=>{
+    try {
+        let ans=await tripModel.find()
+        res.send(ans)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 module.exports={TripRouter}
